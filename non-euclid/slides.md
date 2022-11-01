@@ -1,138 +1,78 @@
 ---
-# try also 'default' to start simple
 theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
+background: /pics/cover.jpg
 class: 'text-center'
-# https://sli.dev/custom/highlighters.html
 highlighter: shiki
-# show line numbers in code blocks
 lineNumbers: false
-# some information about the slides, markdown enabled
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
+  [non-euclidean paper at SIGGRAPH 2022](https://dl.acm.org/doi/pdf/10.1145/3528223.3530186)
 drawings:
+  enabled: true
   persist: false
-# use UnoCSS (experimental)
 css: unocss
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
+# Modeling and Rendering Non-Euclidean Spaces approximated with Concatenated Polytopes
 
 <div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+  SIGGRAPH 2022
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
+  张弛 2022.11
 </div>
 
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
 -->
 
+<style>
+  h1 {
+    font-color: red
+  }
+</style>
 ---
+layout: two-cols
+---
+# Introduction
 
-# What is Slidev?
+... the general methods for rendering m-manifolds embedded in n-D Euclidean spaces.
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+![portal 2](/pics/portal2.jpg)
+<div align="center">portal 2</div>
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
 
-<br>
-<br>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
 
+::right::
+
+![antichamber](/pics/antichamber.jpg)
+<div align="center">antichamber</div>
 <!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
+Some pictures like Portal 2 or else
 -->
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
 ---
 
-# Navigation
+# Concepts
+... mathematical backgrounds and methodologies ...
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+<v-click>
 
-### Keyboard Shortcuts
+## manifold
+A manifold is a topological space which looks locally like a Cartesian space, commonly a finite-dimensional Cartesian space $\mathbb{R}^n$.[^1]
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+</v-click>
+<v-click>
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+## polytope
+The notion of polytope is the generalization of the notion of polygon to arbitrary dimensions.[^2]
 
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
+</v-click>
+<div v-after>
 
-# Code
+[^1]: [nLab/manifold](https://ncatlab.org/nlab/show/manifold)
+[^2]: [nLab/polytope](https://ncatlab.org/nlab/show/polytope)
 
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
+</div>
 
 <style>
 .footnotes-sep {
@@ -148,238 +88,187 @@ function updateUser(id: number, update: User) {
 
 ---
 
-# Components
+# Navigation and rendering in 2D-manifolds
 
-<div grid="~ cols-2 gap-4">
-<div>
+a loop involving ray marching
 
-You can use Vue components directly inside your slides.
+<v-click>
+<img src="/pics/camera_pos.png" width=250>
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+## camera.pose.update()
 
-```html
-<Counter :count="10" />
-```
+<font color=green>// get a normal vector using <Link to="5">cross operation</Link></font>
+</v-click>
+<v-click>
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+## step += delta
+<font color=green>// the marching step size is sufficiently small</font>
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+</v-click>
+<v-click>
 
-</div>
-<div>
+## if ( $\mathbf{p}_0 + \alpha(\mathbf{p}_1 − \mathbf{p}_0) + \beta\mathbf{n} = \mathbf{s} + \gamma\mathbf{r}$ )
 
-```html
-<Tweet id="1390115482657726468" />
-```
+<font color=green>// If the ray of the ‘current’ marching step hits the infinite rectangle in the 3D Euclidean space, it is determined to hit the line segment in the 2-manifold.</font>
+<style>
+img {
+  float: right;
+  object-fit: fill;
+}
+</style>
+<img src="/pics/manifold_path.png" width=500>
 
-<Tweet id="1390115482657726468" scale="0.65" />
+&emsp;&emsp;render()
 
-</div>
-</div>
+### else
+&emsp;&emsp;the ray is projected onto the manifold
+</v-click>
+
+---
+
+# <i>cross</i> operation
+
+ $$cross(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_{n − 1}) := \bigstar(\mathbf{v}_1 \wedge \mathbf{v}_2 \wedge \dots \wedge \mathbf{v}_{n − 1})$$
+
+## exterior product
+
+$$ \wedge: \mathbb{R}^{n - 1} \times \dots \times \mathbb{R}^{n - 1} \to \mathbb{R}^{(n - 1) \times (n - 1)} $$
+
+> #### Example
+> in 3D space with orthonormal basis vectors, $(a\mathbf{e}_1 + b\mathbf{e}_2 + c\mathbf{e}_3) \wedge (d\mathbf{e}_1 +𝑒\mathbf{e}_2 + f\mathbf{e}_3) = (ae − bf)\mathbf{e}_1\mathbf{e}_2 + (bf − ce)\mathbf{e}_2\mathbf{e}_3 + (cd - af)\mathbf{e}_3\mathbf{e}_1$ (a bi-vector)
+
+## Hodge star operator
+
+$$ \bigstar: \mathbb{R}^{(n - m) \times (n - m)} \to \mathbb{R}^{(n - m) \times m} $$
+
+> #### Example
+> in 3D space with orthonormal basis vectors, $\bigstar ((ae − bf)\mathbf{e}_1\mathbf{e}_2 + (bf − ce)\mathbf{e}_2\mathbf{e}_3 + (cd - af)\mathbf{e}_3\mathbf{e}_1) = ((ae − bf)\mathbf{e}_3 + (bf − ce)\mathbf{e}_1 + (cd - af)\mathbf{e}_2)$
+
+---
+
+# Navigation in Polytopes
+
+In order to reduce the computational cost, we approximate an 𝑚-manifold with a concatenation of 𝑚-D polytopes (henceforth, m-polytopes).
+
+
+<crawler style="float: right; width:400px; height:360px" width="400" height="360"/>
+
+
+<img id="right" src="/pics/polytope_path.png" width=400>
+
+<img src="/pics/explain_polypath.png" width=300>
+
+
+$\mathbf{r}' = \mathbf{r}'_0 + (\mathbf{I} − \mathbf{V}\mathbf{V}^T)\mathbf{r} = \mathbf{V}\mathbf{R}\mathbf{V}^T \mathbf{r} + (\mathbf{I} − \mathbf{V}\mathbf{V}^T)\mathbf{r}$
 
 
 ---
-class: px-20
----
 
-# Themes
+# Rendering in Polytopes
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+In order to reduce the computational cost, we approximate an 𝑚-manifold with a concatenation of 𝑚-D polytopes (henceforth, m-polytopes).
 
-<div grid="~ cols-2 gap-2" m="-t-2">
+<img src="/pics/polytope_render.png" width=700 style="margin: 0 auto;">
 
-```yaml
----
-theme: default
----
-```
+<div align="center">multiple light-ray paths from a single light source to a single point</div>
 
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
 ---
-preload: false
+
+# Scene modeling: polytope concatenation
+
+minimize the lengths between mating facets (portals)
+
+<video width=300 controls style="float: right; object-fit: fill;">
+  <source src="/video/sfcr.mp4" type="video/mp4">
+video not supported.
+</video>
+
+## <font color=LightGray>Spring forces and collision resolution</font>
+
+<v-clicks>
+
+**start: while (!timeout) { init_simulator(dimension); sf(); cr(); }**
+
+**if(good) return;**
+<font size="2" color=DarkGreen>// Alternating between spring forces and collision resolution is repeated until either the polytopes are concatenated with no interpenetration or the predefined count of iterations is reached.</font>
+
+## <font color=LightGray>Adding joint polytopes</font>
+
+**try { addjoint(); }**
+<font size="2" color=DarkGreen>// The corresponding vertices of two mating facets are connectedafter exceeding the predefined iteration count.</font>
+
+## <font color=LightGray>Embedding in higher-dimensional spaces</font>
+**catch(e) { dimension++; goto start; }**
+</v-clicks>
+
 ---
 
-# Animations
+# Effects
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
+<style>
+  .container {
+    -ms-overflow-style: auto;  /* Internet Explorer 10+ */
+    scrollbar-width: auto;  /* Firefox */
+}
+.container::-webkit-scrollbar { 
+    display: auto;  /* Safari and Chrome */
+}
+  div.scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+  }
+</style>
 
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
+<div class="scroll" style="margin: auto;">
+  <div style="display: inline-block; width: 100%;">
+    <video width=650 controls style="margin: 0 auto;">
+      <source src="/video/rt_result.mp4" type="video/mp4">
+    video not supported.
+    </video>
+    <div align="center"> ray tracing effect </div>
   </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+  <div style="display: inline-block; width: 100%;">
+    <video width=650 controls style="margin: 0 auto;">
+      <source src="/video/phong_result.mp4" type="video/mp4">
+    video not supported.
+    </video>
+    <div align="center"> phong lighting effect </div>
+  </div>
+  <div style="display: inline-block; width: 100%;">
+    <video width=650 controls style="margin: 0 auto;">
+      <source src="/video/pt_result.mp4" type="video/mp4">
+    video not supported.
+    </video>
+    <div align="center"> path tracing effect </div>
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
 ---
 
-# LaTeX
+# <div style="background-color=red;">NEXT TIME ...</div>
 
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
+<v-click>
 
-<br>
+## Generalized Resampled Importance Sampling: Foundations of ReSTIR
 
-Inline $\sqrt{3x-1}+(1+x)^2$
+<video width=650 controls style="margin: 0 auto;">
+  <source src="/video/next.mp4" type="video/mp4">
+video not supported.
+</video>
 
-Block
-$$
-\begin{array}{c}
+</v-click>
 
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
-
----
-layout: center
-class: text-center
----
-
-# Learn More
-
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+</style>

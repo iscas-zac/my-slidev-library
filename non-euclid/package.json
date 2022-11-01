@@ -1,13 +1,19 @@
 {
+  "name": "non-euclid",
   "private": true,
   "scripts": {
-    "dev": "slidev",
     "build": "slidev build",
+    "dev": "slidev --open",
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "latest",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest"
+    "@slidev/cli": "^0.36.9",
+    "@slidev/theme-default": "*",
+    "@slidev/theme-seriph": "*",
+    "drauu": "^0.3.2",
+    "three": "^0.146.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.27.1"
   }
 }
