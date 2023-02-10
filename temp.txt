@@ -1,0 +1,5 @@
+https://hack-words.com/ 复古风的猜谜游戏，AI绘制噪声图像
+https://labs.kagi.com/ai/sum自动生成页面/pdf摘要
+https://fathy.fr/carbonyl 浏览器底层相关开发日志，本篇介绍TUI浏览器
+https://rpdillon.net/redbean-tiddlywiki-saver.html 介绍redbean、tiddlywiki，从.com压缩包运行网页，在windows上有问题（https://github.com/amreus/tiddly-bean）
+复现上面这个时发现pwsh curl >得到的wiki文件显示白屏，我重命名、重下载都不行，后来走linux curl才行
