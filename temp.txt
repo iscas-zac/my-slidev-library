@@ -1,9 +1,5 @@
-https://hack-words.com/ 复古风的猜谜游戏，AI绘制噪声图像
-https://labs.kagi.com/ai/sum自动生成页面/pdf摘要
-https://fathy.fr/carbonyl 浏览器底层相关开发日志，本篇介绍TUI浏览器
-https://rpdillon.net/redbean-tiddlywiki-saver.html 介绍redbean、tiddlywiki，从.com压缩包运行网页，在windows上有问题（https://github.com/amreus/tiddly-bean）
-复现上面这个时发现pwsh curl >得到的wiki文件显示白屏，我重命名、重下载都不行，后来走linux curl才行
-https://www.twilio.com/blog/comparing-nextjs-nestjs-nuxt-gatsby 很好的前端渲染科普
-https://www.nethack.org/v367/ports/download-win.html 游戏，还没玩过
-https://quickdraw.withgoogle.com 人画机器猜游戏
-https://motion-canvas.github.io/ 另一个绘制动画的方法
+https://www.youtube.com/watch?v=EXoBHxCvxlE windows优化游戏体验的免费镜像
+owenyoung.com和buzzing.cc，有意思的开发者以及他的hn等新闻网页的翻译版
+suricrasia.online/iceberg 计算机相关meme的冰山图
+http://networksciencebook.com/ 著名书籍
+https://nakamotoinstitute.org/ 比特币原始论文
