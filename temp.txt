@@ -1,11 +1,22 @@
-https://www.youtube.com/watch?v=EXoBHxCvxlE windows优化游戏体验的免费镜像
-owenyoung.com和buzzing.cc，有意思的开发者以及他的hn等新闻网页的翻译版
-suricrasia.online/iceberg 计算机相关meme的冰山图
-http://networksciencebook.com/ 著名书籍
-https://nakamotoinstitute.org/ 比特币原始论文
-
-今天学习rustwasm，结果还没开始写rust就连续遇到问题。https://rustwasm.github.io/docs/book/game-of-life/setup.html一切顺利，当我几个月后回来接着做时，wasm-pack build指令不响应。
-调整了proxy配置（https://sacul.github.io/rust/cargo_proxy）以后它莫名可以运行了，就接着做。npm init wasm-app www时候我发现输出的字符是乱码，想起之前cargo-install时也出现过乱码，想解决之。
-经过多方试探还是发现电脑已经装了windows terminal，只不过在开始菜单里都唤不出，最后还是去microsoft store里想装一个的时候发现可以直接“打开”。字符问题解决了。
-之后npm install两次，打算run start的时候服务器自动退出了，查询Error: error:0308010C:digital envelope routines::unsupported得知（https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported）需要为历史版本兼容考虑而添加一行$env:NODE_OPTIONS = "--openssl-legacy-provider"命令。
-但是好不容易打开网页，服务器反复报错Module not found: Error: Can't resolve 'wasm_game_of_life'。试了（https://github.com/rustwasm/wasm_game_of_life/issues/41）里的多个回答，终于发现在pkg文件夹下面缺个package.json文件，解决之。
+http://viznut.fi/texts-en/inverted_computer_culture.html 计算机文化的科幻设想
+https://wordasimage.github.io/Word-As-Image-Page/ 艺术字工具
+https://genmon.github.io/braggoscope/ AI-powered博客分类页面
+https://gdevelop.io/ 另一个低代码游戏制作工具
+https://atroposjs.com/docs 网页可交互悬浮标签的js库
+https://chroniclehq.com 新的优雅展示工具（实际效果未知） *from 不死鸟
+https://quickref.cn/ 各种工具开发者文档的中文速查表
+https://course.rs/ 中文rust教程+习题
+https://gods.art/ 漂亮的数学图像
+https://v8.dev/docs 常见的浏览器都用了这个js引擎
+https://alexanderameye.github.io/notes/stylized-water-shader/ 完全不看文字都能读懂的水形态渲染
+https://hellogithub.com/onefile/code/7e574fc7d58d4fae950a95d7bdb87d09 单c文件http server
+https://nickdesaulniers.github.io/blog/2023/03/10/disambiguating-arm/ arm相关术语介绍
+https://news.ycombinator.com/item?id=35120084 关于模板编程的讨论
+https://buhuibaidu.ma/ 生草的伸手党指南
+https://modernfontstacks.com/ 原生字体演示网站
+https://dev.to/leandronsp/git-fundamentals-a-complete-guide-do7 git的基础原理
+https://abuseofnotation.github.io/category-theory-illustrated/06_functors/ 范畴论图解
+https://greenhubtx.ga/en/index.html vpn
+https://github.com/npmaile/blog/blob/main/posts/3.%20The%20Secret%20World%20of%20Programmers.md 笑死了的程序员独白
+http://wasm.continuation-labs.com/d3demo/ 较早在HN看到的doom 3的web移植
+https://retool.com/visual-basic/ 一页VB的故事，但更关心retool可以用来做这种页面
